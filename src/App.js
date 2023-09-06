@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import MealsScreen from './MealsScreen';
+import RecipeScreen from './RecipeScreen';
+import InventoryScreen from './InventoryScreen';
+import {useState} from 'react';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [screen,setScreen] = useState('inventory');
+  switch (screen) {
+    case 'meals':
+      return <MealsScreen userId="YwuLfa7WCCQcg9Wk7xrl" setScreen={setScreen}></MealsScreen>
+    case 'recipes':
+      return <RecipeScreen userId="YwuLfa7WCCQcg9Wk7xrl" setScreen={setScreen}></RecipeScreen>
+    case 'inventory':
+      return <InventoryScreen userId="YwuLfa7WCCQcg9Wk7xrl" setScreen={setScreen}></InventoryScreen>
+    default:
+      return <p>Error...</p>
+  }
+  // return (
+  //   <div className="App">
+     
+  //   </div>
+  // );
 }
 
 export default App;
