@@ -5,7 +5,6 @@ export default function MealsScreen({userId,setScreen}) {
     const loadMeals = async () => {
         const mealsResponse = await fetch(`https://instamealbackend.onrender.com/recipes/makeableForUser/${userId}`);
         const mealsData = await mealsResponse.json();
-
         setMeals(mealsData)
     }
     useEffect(() => {
@@ -24,7 +23,7 @@ export default function MealsScreen({userId,setScreen}) {
                 </ul>
                 <h1>Other possibilities</h1>
                 <ul style={{listStyle:'none'}}>
-                    {meals.filter(meal => !meal.makeable).sort((meal1,meal2) => meal1.makeableScore - meal2.makeableScore).map(meal => <li key={meal.id}>{meal.name}</li>)}
+                    {meals.filter(meal => !meal.makeable).sort((meal1,meal2) => meal1.missingIngredients.length - meal2.missingIngredients.length).map((meal,index) => index < 5 ?<li key={meal.id}>{meal.name} -missing: {meal.missingIngredients.join(',')}</li>:'')}
                 </ul>
 
             </div>

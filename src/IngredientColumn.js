@@ -45,7 +45,7 @@ export default function IngredientColumn({ingredients,category,updateIngredient,
                 }}>
 
                 <input name="name" type="text" placeholder="ingredient"></input>
-                <input name="amount" type="number" placeholder="amount"></input>
+                <input name="amount" type="text" placeholder="amount"></input>
                 <input name="measure" list="measures" placeholder="cup"></input>
                 <input name="submit" type="submit"></input>
                 <datalist id="measures">
