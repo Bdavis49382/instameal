@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/instameal/static/css/main.0fbd2f6c.css",
-    "main.js": "/instameal/static/js/main.01117401.js",
+    "main.js": "/instameal/static/js/main.cef3871f.js",
     "static/js/787.7e45465b.chunk.js": "/instameal/static/js/787.7e45465b.chunk.js",
     "index.html": "/instameal/index.html",
     "main.0fbd2f6c.css.map": "/instameal/static/css/main.0fbd2f6c.css.map",
-    "main.01117401.js.map": "/instameal/static/js/main.01117401.js.map",
+    "main.cef3871f.js.map": "/instameal/static/js/main.cef3871f.js.map",
     "787.7e45465b.chunk.js.map": "/instameal/static/js/787.7e45465b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0fbd2f6c.css",
-    "static/js/main.01117401.js"
+    "static/js/main.cef3871f.js"
   ]
 }
