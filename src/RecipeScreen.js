@@ -9,6 +9,15 @@ export default function RecipeScreen({userId,setScreen}) {
         const recipesData = await response.json();
         setRecipes(recipesData);
     }
+    const loadRecipe = async (recipe) => {
+        const response = await fetch(`https://instamealbackend.onrender.com/recipes/${recipe.id}`);
+        const recipeData = await response.json();
+        setRecipes(oldRecipes => {
+            return oldRecipes.map(oldRecipe => {
+                return oldRecipe.id === recipe.id? recipeData : oldRecipe;
+            })
+        })
+    }
     const addIngredient = async (name,amount,measure,category) => {
         const recipe = getRecipe(category);
         await fetch(`https://instamealbackend.onrender.com/recipes/updateIngredient/${recipe.id}`, {
@@ -18,7 +27,7 @@ export default function RecipeScreen({userId,setScreen}) {
                 "Content-Type": "application/json"
             }
         });
-        loadRecipes(); 
+        loadRecipe(recipe); 
     }
     const getRecipe = (name) => {
         const recipe =  recipes.find(recipe => recipe.name === name)
@@ -39,17 +48,18 @@ export default function RecipeScreen({userId,setScreen}) {
                 "Content-Type": "application/json"
             }
         });
-        loadRecipes(); 
+        loadRecipe(recipe); 
     }
     const addRecipe = async (name) => {
+        const newRecipe = {name,users:[userId],ingredients:{}}
         await fetch(`https://instamealbackend.onrender.com/recipes/create`, {
             method: 'POST',
-            body: JSON.stringify({name,users:[userId],ingredients:{}}),
+            body: JSON.stringify(newRecipe),
             headers: {
                 "Content-Type": "application/json"
             }
         })
-        loadRecipes(); 
+        setRecipes([...recipes,newRecipe])
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -93,6 +103,9 @@ export default function RecipeScreen({userId,setScreen}) {
             </div>
             :
             <p>loading...</p>}
+            </div>
+            <div style={{height:'50vh'}}>
+
             </div>
         </div>
     )

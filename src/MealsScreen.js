@@ -23,7 +23,7 @@ export default function MealsScreen({userId,setScreen}) {
                 </ul>
                 <h1>Other possibilities</h1>
                 <ul style={{listStyle:'none'}}>
-                    {meals.filter(meal => !meal.makeable).sort((meal1,meal2) => meal1.missingIngredients.length - meal2.missingIngredients.length).map((meal,index) => index < 5 ?<li key={meal.id}>{meal.name} -missing: {meal.missingIngredients.join(',')}</li>:'')}
+                    {meals.filter(meal => !meal.makeable).sort((meal1,meal2) => meal1.missingIngredients.length - meal2.missingIngredients.length).map((meal,index) => index < 15 ?<li key={meal.id}>{meal.name} -missing: {meal.missingIngredients.join(',')}</li>:'')}
                 </ul>
 
             </div>
