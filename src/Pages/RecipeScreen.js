@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
-import IngredientColumn from './IngredientColumn';
-import Sidebar from './Sidebar';
+import IngredientColumn from '../Components/IngredientColumn';
+import Sidebar from '../Components/Sidebar';
 export default function RecipeScreen({userId,setScreen}) {
     const [recipes,setRecipes] = useState([]);
     const [adding,setAdding] = useState(false);

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import IngredientColumn from './IngredientColumn';
-import Sidebar from './Sidebar';
+import IngredientColumn from '../Components/IngredientColumn';
+import Sidebar from '../Components/Sidebar';
 export default function InventoryScreen({userId,setScreen}) {
     const [inventory,setInventory] = useState([]);
     const loadUser = async () => {

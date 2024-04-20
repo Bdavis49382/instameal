@@ -1,7 +1,7 @@
 import './App.css';
-import MealsScreen from './MealsScreen';
-import RecipeScreen from './RecipeScreen';
-import InventoryScreen from './InventoryScreen';
+import MealsScreen from './Pages/MealsScreen';
+import RecipeScreen from './Pages/RecipeScreen';
+import InventoryScreen from './Pages/InventoryScreen';
 import {useState} from 'react';
 
 

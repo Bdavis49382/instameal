@@ -26,6 +26,7 @@ export default function IngredientColumn({ingredients,category,updateIngredient,
     return (
         <div>
             <h2>{category.toUpperCase()}</h2>
+            <h4>👁️</h4>
             <ul style={{padding:5}}>
                 {Object.keys(ingredients).sort().map(ingredient => <Ingredient
             key={ingredient} 
