@@ -1,27 +1,24 @@
-import {useState, useEffect} from 'react';
-import Sidebar from '../Components/Sidebar';
-export default function MealsScreen({userId,setScreen}) {
-    const [meals,setMeals] = useState([]);
+import {useState} from 'react';
+import { useLoaderData } from 'react-router-dom';
+
+export const loadMeals = async ({params}) => {
+    const mealsResponse = await fetch(`https://instamealbackend.onrender.com/recipes/makeableForUser/${params.uid}`);
+    const mealsData = await mealsResponse.json();
+    return mealsData;
+}
+
+export default function MealsScreen() {
+    const meals = useLoaderData();
     const [numVisible,setNumVisible] = useState(5);
-    const loadMeals = async () => {
-        const mealsResponse = await fetch(`https://instamealbackend.onrender.com/recipes/makeableForUser/${userId}`);
-        const mealsData = await mealsResponse.json();
-        setMeals(mealsData)
-    }
     const showMore = () => {
         setNumVisible(meals.length);
     }
     const showLess = () => {
         setNumVisible(5);
     }
-    useEffect(() => {
-       loadMeals(); 
-    },[])
     return (
         <div className='App'>
-            <Sidebar setScreen={setScreen}/>
             <div>
-
             <h1>Makeable meals</h1>
             {meals.length !== 0 ? 
             <div>
@@ -34,7 +31,7 @@ export default function MealsScreen({userId,setScreen}) {
                     .sort((meal1,meal2) => meal1.missingIngredients.length - meal2.missingIngredients.length)
                     .map((meal,index) => index < numVisible ?<li key={meal.id}>{meal.name} -missing: {meal.missingIngredients.join(',')}</li>:'')}
                 </ul>
-                {numVisible == meals.length
+                {numVisible === meals.length
                 ?
                 <button onClick={showLess}>See Less</button>
                 :
